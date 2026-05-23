@@ -1,5 +1,8 @@
 import api from "../api/axios";
-import { LoginData, TokenResponse } from "../types/auth";
+import type {
+  LoginData,
+  TokenResponse,
+} from "../types/auth";
 
 export const loginUser = async (
   data: LoginData

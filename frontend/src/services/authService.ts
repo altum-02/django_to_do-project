@@ -1,4 +1,5 @@
 import api from "../api/axios";
+
 import type {
   LoginData,
   TokenResponse,
@@ -7,6 +8,11 @@ import type {
 export const loginUser = async (
   data: LoginData
 ): Promise<TokenResponse> => {
-  const response = await api.post("token/", data);
 
-  return response.dat
+  const response = await api.post(
+    "token/",
+    data
+  );
+
+  return response.data;
+};

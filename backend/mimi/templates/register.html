@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+     <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-card">  
+            
+            <div class="register-header">
+                <h1>Register</h1>
+            </div>   
+
+            {% for message in messages %}
+            <p style="color:rgb(98, 0, 255);">{{ message }}</p>
+            {% endfor %}
+
+            <form method="POST">
+            {% csrf_token %}
+
+                <div class="form-group">
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-pen-to-square"></i> 
+                        <input type="text" name="username" placeholder="Username" required><br><br> 
+                    </div>
+
+                    <div class="input-box">
+                        <input type="email" name="email" placeholder="Email" required><br><br>
+                    </div>
+                    
+                    <div class="input-box">
+                        <input type="password" name="password1" placeholder="Password" required><br><br>
+                    </div>
+
+                    <div class="input-box">
+                        <input type="password" name="password2" placeholder="Confirm Password" required><br><br>
+                    </div>
+                    
+                    <div class="input-box">
+                        <input type="date" name="date_of_birth" placeholder="Date of Birth" required><br><br>
+                    </div> 
+                      
+                    <div class="input-box">
+                        <input type="number" name="phone_number" placeholder="Phone Number" required><br><br>
+                    </div>    
+
+                    <button class="register-btn" type="Register">Sign In</button>
+            </form>
+            <p class="links">
+                <a href="{% url 'task_list' %}">Cancel</a>
+                <a herf="{% url 'login' %}">enter into your Account </a>
+            </p>    
+        </div>
+    </div>
+</body>
+</html>

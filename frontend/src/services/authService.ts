@@ -9,5 +9,4 @@ export const loginUser = async (
 ): Promise<TokenResponse> => {
   const response = await api.post("token/", data);
 
-  return response.data;
-};
+  return response.dat

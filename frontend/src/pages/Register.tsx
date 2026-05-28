@@ -1,26 +1,81 @@
-import axios from "axios";
+import { useState } from "react";
 
-const api = axios.create({
-  baseURL:
-    "http://127.0.0.1:8000/api/",
-});
+import {
+  registerUser,
+} from "../services/authService";
 
-api.interceptors.request.use(
-  (config) => {
+const Register = () => {
 
-    const token =
-      localStorage.getItem(
-        "access"
-      );
+  const [username, setUsername] =
+    useState("");
 
-    if (token) {
+  const [email, setEmail] =
+    useState("");
 
-      config.headers.Authorization =
-        `Bearer ${token}`;
+  const [password, setPassword] =
+    useState("");
+
+  const handleRegister = async (
+    e: React.FormEvent
+  ) => {
+
+    e.preventDefault();
+
+    try {
+
+      await registerUser({
+        username,
+        email,
+        password,
+      });
+
+      alert("Registered successfully");
+
+    } catch (error) {
+
+      console.log(error);
+
+      alert("Registration failed");
     }
+  };
 
-    return config;
-  }
-);
+  return (
+    <div>
+      <h1>Register</h1>
 
-export default api;
+      <form onSubmit={handleRegister}>
+
+        <input
+          type="text"
+          placeholder="username"
+          onChange={(e) =>
+            setUsername(e.target.value)
+          }
+        />
+
+        <input
+          type="email"
+          placeholder="email"
+          onChange={(e) =>
+            setEmail(e.target.value)
+          }
+        />
+
+        <input
+          type="password"
+          placeholder="password"
+          onChange={(e) =>
+            setPassword(e.target.value)
+          }
+        />
+
+        <button type="submit">
+          Register
+        </button>
+
+      </form>
+    </div>
+  );
+};
+
+export default Register;

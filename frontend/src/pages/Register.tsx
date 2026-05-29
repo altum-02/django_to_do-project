@@ -23,11 +23,7 @@ const Register = () => {
 
     try {
 
-      await registerUser({
-        username,
-        email,
-        password,
-      });
+      await registerUser();
 
       alert("Registered successfully");
 

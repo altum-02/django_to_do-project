@@ -45,12 +45,4 @@ const Navbar = () => {
             </Link>
 
           </>
-        ) : (
-          <>
-
-            <Link to="/dashboard">
-              Dashboard
-            </Link>
-
-            <button
-              onClick={logo
+      

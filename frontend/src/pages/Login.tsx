@@ -1,104 +1,29 @@
-import { useState } from "react";
+<div className="min-h-screen bg-slate-100 flex items-center justify-center">
 
-import { loginUser }
-from "../services/authService";
+  <div className="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-md">
 
-import { useNavigate }
-from "react-router-dom";
+    <h1 className="text-4xl font-bold mb-8 text-center">
+      Welcome Back
+    </h1>
 
+    <input
+      type="text"
+      placeholder="Username"
+      className="w-full border p-4 rounded-xl mb-4"
+    />
 
-const Login = () => {
+    <input
+      type="password"
+      placeholder="Password"
+      className="w-full border p-4 rounded-xl mb-4"
+    />
 
-  const navigate = useNavigate();
+    <button
+      className="w-full bg-blue-600 text-white py-4 rounded-xl"
+    >
+      Login
+    </button>
 
-  const [username, setUsername] =
-    useState("");
+  </div>
 
-  const [password, setPassword] =
-    useState("");
-
-  const handleLogin = async (
-    e: React.FormEvent
-  ) => {
-
-    e.preventDefault();
-
-    try {
-
-      const data =
-        await loginUser({
-          username,
-          password,
-        });
-
-      localStorage.setItem(
-        "access",
-        data.access
-      );
-
-      localStorage.setItem(
-        "refresh",
-        data.refresh
-      );
-
-      navigate("/dashboard");
-
-    } catch (error) {
-
-      console.log(error);
-
-      alert("Login failed");
-    }
-  };
-
-  return (
-
-    <div className="min-h-screen flex items-center justify-center">
-
-      <form
-        onSubmit={handleLogin}
-        className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md space-y-4"
-      >
-
-        <h1 className="text-3xl font-bold text-center">
-
-          Login
-
-        </h1>
-
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) =>
-            setUsername(e.target.value)
-          }
-          className="w-full border p-3 rounded-lg"
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
-          className="w-full border p-3 rounded-lg"
-        />
-
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-3 rounded-lg"
-        >
-
-          Login
-
-        </button>
-
-      </form>
-
-    </div>
-  );
-};
-
-export default Login;
+</div>

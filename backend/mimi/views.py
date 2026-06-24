@@ -20,7 +20,7 @@ def create_task(request):
 
 @login_required(login_url='login')   
 def task_detail(request,id):
-    task = get_object(Task, id=id, user=request.user)
+    task = get_object_or_404(Task, id=id, user=request.user)
     return render(request, "tasks/task_detail.html", {"task": task})     
 
 def show(request):
